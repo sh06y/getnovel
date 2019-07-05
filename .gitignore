@@ -2,4 +2,4 @@ venv/
 .idea/
 
 # output
-.txt
+*.txt
