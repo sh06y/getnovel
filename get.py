@@ -7,7 +7,6 @@ f = open("novel.txt","a+",encoding='utf-8')
 
 # 获取小说内容部分
 def get(url):
-    try urlopen(url)
     html = urlopen(url) # 打开链接
     soup = BeautifulSoup(html,features="lxml") # 用BeautifulSoup对上一步获取到的网页进行解析
     title = soup.h1 # 提取小说章节标题
