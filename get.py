@@ -3,10 +3,11 @@ from bs4 import BeautifulSoup
 import re
 
 urlx = 'http://www.aouchina.com/shu/6/'
-f = open("novel.txt","a+",encoding='utf-8') # 打开文件，没有的话自动创建
+f = open("novel.txt","a+",encoding='utf-8')
 
 # 获取小说内容部分
 def get(url):
+    try urlopen(url)
     html = urlopen(url) # 打开链接
     soup = BeautifulSoup(html,features="lxml") # 用BeautifulSoup对上一步获取到的网页进行解析
     title = soup.h1 # 提取小说章节标题
@@ -21,15 +22,14 @@ def get(url):
 
 # 保存部分
 def save():
-    f.write(novel) # 写入
+    f.write(novel)
 
 novel = ''
 
 # 开始爬
-for i in range(2829,2879):
+for i in range(2829,2880):
     print("正在保存",urlx + str(i) + '.html')
-    # novel = novel + get(urlx + str(i) + '.html')
     novel = get(urlx + str(i) + '.html')
     save()
 
-f.close()
+f.close() # 关闭文件
